@@ -7,6 +7,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../store/userSlice.js";
+import { BANNER_IMG } from "../assets/constants.js";
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState(null);
@@ -50,10 +51,7 @@ const Login = () => {
 return (
     <div className="min-h-screen bg-linear-to-b from-gray-900 via-black to-black relative">
       <Header />
-      <div
-        className="absolute inset-0 bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/c81956f1-5750-454c-9b3c-7a4d990d3d06/web/IN-en-20251208-TRIFECTA-perspective_d69f5f82-9a35-45d7-a7b6-9af6e0643bf5_large.jpg')] bg-cover bg-center opacity-30"
-        aria-hidden
-      />
+      <img src={BANNER_IMG} alt="BANNER-MOVIES" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-30"/>
       <main className="flex items-center justify-center px-6 py-44">
         <section className="w-full max-w-md relative z-10">
           <div className="backdrop-blur-sm bg-black/60 rounded-2xl p-10 shadow-2xl border border-white/5">
