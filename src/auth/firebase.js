@@ -4,14 +4,22 @@ import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+const API_KEY = import.meta.env.VITE_API_KEY;
+const AUTH_DOMAIN = import.meta.env.VITE_AUTH_DOMAIN;
+const PROJECT_ID = import.meta.env.VITE_PROJECT_ID;
+const STORAGE_BUCKET = import.meta.env.VITE_STORAGE_BUCKET;
+const MESSAGING_SENDER_ID = import.meta.env.VITE_MESSAGING_SENDER_ID;
+const APP_ID = import.meta.env.VITE_APP_ID;
+
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCSDt10j4JBGXnoVW2BMTZhv-k0Chv6CrM",
-  authDomain: "netflix-gpt-e4ee3.firebaseapp.com",
-  projectId: "netflix-gpt-e4ee3",
-  storageBucket: "netflix-gpt-e4ee3.firebasestorage.app",
-  messagingSenderId: "452427206812",
-  appId: "1:452427206812:web:34dd2e16fd1ef7be629d59"
+  apiKey: API_KEY,
+  authDomain: AUTH_DOMAIN,
+  projectId: PROJECT_ID,
+  storageBucket: STORAGE_BUCKET,
+  messagingSenderId: MESSAGING_SENDER_ID,
+  appId: APP_ID,
 };
 
 // Initialize Firebase
