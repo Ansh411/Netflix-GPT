@@ -4,22 +4,29 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { LOGO } from "../assets/constants.js";
 
+
 const Header = () => {
   const navigate = useNavigate();
+
   const user = useSelector((store) => store.user);
 
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => navigate("/"))
-      .catch(() => navigate("/error"));
+  const handleSignOut = async () => {
+    try{
+      await signOut(auth);
+    }
+    catch (err) {
+    console.error("Sign out failed:", err);
+    navigate("/error");
+  }
+
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full px-8 md:px-14 py-4 bg-linear-to-b from-black/90 to-transparent backdrop-blur-sm flex items-center justify-between z-50">
+    <header className="fixed top-0 left-0 w-full px-8 md:px-14 py-4 bg-linear-to-b from-black/90 to-transparent backdrop-blur-xs flex items-center justify-between z-50">
       {/* Logo */}
       <img
         src= {LOGO}
-        className="w-37 md:w-50 drop-shadow-xl select-none"
+        className="w-32 md:w-44 drop-shadow-xl select-none"
       />
 
       {/* User Section */}

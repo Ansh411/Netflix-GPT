@@ -1,18 +1,17 @@
-
 import { useRef, useState } from "react";
-import Header from "../components/Header";
 import { validateLoginData } from "../utils/validate.js";
 import { auth } from "../auth/firebase.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addUser } from "../store/userSlice.js";
+import { addUser } from "../store/userSlice";
 import { BANNER_IMG } from "../assets/constants.js";
+import Layout from "../components/Layout.jsx";
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
@@ -20,8 +19,8 @@ const Login = () => {
   const handleSubmitButton = async () => {
     setErrorMessage(null);
 
-    const email = emailRef.current?.value ?? "";
-    const password = passwordRef.current?.value ?? "";
+    const email = emailRef.current?.value || "";
+    const password = passwordRef.current?.value || "";
 
     const message = validateLoginData(email, password);
     if (message) {
@@ -42,69 +41,44 @@ const Login = () => {
         })
       );
 
-      navigate("/browse");
+      navigate("/browse", { replace: true });
     } catch (err) {
       setErrorMessage(err.message || "Failed to sign in");
     }
   };
 
-return (
-    <div className="min-h-screen bg-linear-to-b from-gray-900 via-black to-black relative">
-      <Header />
-      <img src={BANNER_IMG} alt="BANNER-MOVIES" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-30"/>
+  return (
+    <Layout>
+      <img src={BANNER_IMG} alt="BANNER" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-30"/>
       <main className="flex items-center justify-center px-6 py-44">
         <section className="w-full max-w-md relative z-10">
           <div className="backdrop-blur-sm bg-black/60 rounded-2xl p-10 shadow-2xl border border-white/5">
             <h1 className="text-white text-3xl font-extrabold my-6">Sign In</h1>
 
             <label className="block text-sm text-gray-300 my-2">Email</label>
-            <input
-              ref={emailRef}
-              type="email"
-              placeholder="abc@example.com"
-              className="w-full p-4 rounded-lg my-3 bg-gray-800/70 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-zinc-300"
-            />
-            
+            <input ref={emailRef} type="email" placeholder="abc@example.com" className="w-full p-4 rounded-lg my-3 bg-gray-800/70 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-zinc-300" />
+
             <label className="block text-sm text-gray-300 my-2">Password</label>
-            <input
-              ref={passwordRef}
-              type="password"
-              placeholder="Your password"
-              className="w-full p-4 rounded-lg my-3 bg-gray-800/70 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-zinc-300"
-            />
+            <input ref={passwordRef} type="password" placeholder="Your password" className="w-full p-4 rounded-lg my-3 bg-gray-800/70 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-zinc-300" />
 
-            {errorMessage && (
-              <p className="text-red-400 text-sm my-3">{errorMessage}</p>
-            )}
+            {errorMessage && <p className="text-red-400 text-sm my-3">{errorMessage}</p>}
 
-            <button
-              onClick={handleSubmitButton}
-              className="w-full py-3 my-6 rounded-lg bg-red-600 hover:bg-red-700 cursor-pointer text-white font-semibold transition"
-            >
+            <button onClick={handleSubmitButton} className="w-full py-3 my-6 rounded-lg bg-red-600 hover:bg-red-700 cursor-pointer text-white font-semibold transition">
               Sign In
             </button>
 
-            {/* Footer */}
             <div className="mt-4 text-center text-sm text-gray-400">
-              <span className="text-sm">New to NetflixGPT?</span>{" "}
-              <Link to="/signup" className="text-red-500 hover:underline ml-1">
-                Create an account
-              </Link>
+              New to NetflixGPT?{" "}
+              <Link to="/signup" className="text-red-500 hover:underline ml-1">Create an account</Link>
             </div>
-
             <div className="mt-6 border-t border-white/5 pt-2 text-center text-sm text-gray-400">
               <p>By continuing you agree to the NetflixGPT terms.</p>
             </div>
           </div>
         </section>
       </main>
-    </div>
+    </Layout>
   );
-
 };
 
 export default Login;
-
-
-
-
