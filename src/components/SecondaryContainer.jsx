@@ -1,0 +1,29 @@
+import { useSelector } from "react-redux";
+import MoviesList from "./MoviesList";
+
+const SecondaryContainer = () => {
+  const movies = useSelector((store) => store.movies);
+  if (!movies) return null;
+
+  return (
+    <div className="relative z-30 -mt-[25vh] md:-mt-[45vh]">
+
+      {/* 🔥 FADE ZONE (TRANSPARENT → BLACK) */}
+      <div className="h-[25vh] md:h-[35vh] bg-linear-to-b from-transparent via-black/60 to-black pointer-events-none" />
+
+      {/* 🎬 CONTENT ZONE (PURE BLACK STARTS HERE) */}
+      <div className="bg-black/95 backdrop-blur-sm px-4 md:px-8 pb-24">
+        <MoviesList title="Now Playing" movies={movies.nowPlayingMovies} />
+        <MoviesList title="Top Rated" movies={movies.topRatedMovies} />
+        <MoviesList title="Upcoming" movies={movies.upcomingMovies} />
+        <MoviesList title="Popular" movies={movies.popularMovies} />
+      </div>
+
+    </div>
+  );
+};
+
+export default SecondaryContainer;
+
+
+
