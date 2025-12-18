@@ -12,7 +12,7 @@ const VideoBackground = ({ movieId }) => {
     <div className="fixed top-0 left-0 w-screen h-screen -z-10 overflow-hidden">
       <iframe
         className="w-screen h-screen object-cover scale-125"
-        src={`https://www.youtube.com/embed/${trailerVideo.key}?autoplay=1&mute=1&controls=0&loop=1&playlist=${trailerVideo.key}`}
+        src={`https://www.youtube.com/embed/${trailerVideo.key}?autoplay=1&mute=1&vq=720p&controls=0&loop=1&playlist=${trailerVideo.key}`}
         allow="autoplay; fullscreen"
       />
      

@@ -13,8 +13,8 @@ const MainContainer = () => {
   return (
     
     <div className="relative w-full h-screen">
-      <VideoBackground movieId={id} />
       <VideoTitle title={title} overview={overview} />
+      <VideoBackground movieId={id} />
     </div>
   );
 };
