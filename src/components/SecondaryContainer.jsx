@@ -6,13 +6,13 @@ const SecondaryContainer = () => {
   if (!movies) return null;
 
   return (
-    <div className="relative z-30 -mt-[25vh] md:-mt-[45vh]">
+    <div className="relative z-30 -mt-[35vh]">
+      
+      {/* 🌫 FADE ZONE */}
+      <div className="h-[20vh] bg-linear-to-b from-transparent via-black/50 to-black pointer-events-none" />
 
-      {/* 🔥 FADE ZONE (TRANSPARENT → BLACK) */}
-      <div className="h-[25vh] md:h-[35vh] bg-linear-to-b from-transparent via-black/60 to-black pointer-events-none" />
-
-      {/* 🎬 CONTENT ZONE (PURE BLACK STARTS HERE) */}
-      <div className="bg-black/95 backdrop-blur-sm px-4 md:px-8 pb-24">
+      {/* 🎬 CONTENT ZONE */}
+      <div className="bg-black px-4 md:px-8 pb-24">
         <MoviesList title="Now Playing" movies={movies.nowPlayingMovies} />
         <MoviesList title="Top Rated" movies={movies.topRatedMovies} />
         <MoviesList title="Upcoming" movies={movies.upcomingMovies} />
@@ -24,6 +24,3 @@ const SecondaryContainer = () => {
 };
 
 export default SecondaryContainer;
-
-
-

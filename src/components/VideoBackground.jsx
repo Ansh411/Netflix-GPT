@@ -8,19 +8,18 @@ const VideoBackground = ({ movieId }) => {
   if (!trailerVideo?.key) return null;
 
   return (
-    
-    <div className="fixed top-0 left-0 w-screen h-screen -z-10 overflow-hidden">
+    <div className="fixed inset-0 z-0 overflow-hidden">
+     
       <iframe
-        className="w-screen h-screen object-cover scale-125"
+        className="w-full h-full object-cover scale-110 pointer-events-none"
         src={`https://www.youtube.com/embed/${trailerVideo.key}?autoplay=1&mute=1&vq=720p&controls=0&loop=1&playlist=${trailerVideo.key}`}
         allow="autoplay; fullscreen"
       />
-     
-      <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/20 to-black/90"></div>
+
+      
+      <div className="absolute inset-0 z-10 bg-linear-to-b from-black/40 via-black/30 to-black/80" />
     </div>
   );
 };
 
 export default VideoBackground;
-
-
