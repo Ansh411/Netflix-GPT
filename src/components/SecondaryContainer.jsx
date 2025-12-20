@@ -15,7 +15,11 @@ const SecondaryContainer = () => {
       <div className="bg-black px-4 md:px-8 pb-24">
         <MoviesList title="Now Playing" movies={movies.nowPlayingMovies} />
         <MoviesList title="Top Rated" movies={movies.topRatedMovies} />
+        <MoviesList title="Classics" movies={movies.classicMovies} />
+        <MoviesList title="Horror" movies={movies.horrorMovies} />
         <MoviesList title="Upcoming" movies={movies.upcomingMovies} />
+        <MoviesList title="Comedy" movies={movies.comedyMovies} />
+        <MoviesList title="Anime & Fantasy" movies={movies.fantasyMovies} />
         <MoviesList title="Popular" movies={movies.popularMovies} />
       </div>
 
