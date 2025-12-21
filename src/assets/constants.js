@@ -16,4 +16,19 @@ export const PLAY = "https://i.ibb.co/G484tVf9/play-1.png";
 export const INFO = "https://i.ibb.co/BHVCQ5jy/info-1.png";
 //  "https://i.ibb.co/GfzFwhry/info-2.png";
 
+export const SEARCH = "https://i.ibb.co/1tPDcNDS/Search.png";
+
+export const MOVIE = "https://i.ibb.co/WvM5m45x/Movie.png";
+// https://i.ibb.co/rRR7hbHm/cinema.png
+
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
+
+
+export const SUPPORTED_LANGUAGES = [
+  {identifier: "en", name: "English"},
+  {identifier: "hi", name: "Hindi"},
+  {identifier: "es", name: "Spanish"},
+  {identifier: "fr", name: "French"},
+  {identifier: "ar", name: "Arabic"},
+  {identifier: "ja", name: "Japanese"},
+];
