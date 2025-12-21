@@ -1,9 +1,12 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
 import { addFantasyMovies } from '../store/moviesSlice';
 import { API_OPTIONS } from '../assets/constants';
 
 const useFantasyMovies = () => {
+
+    const fantasyMovies = useSelector(store => store.movies.fantasyMovies);
+
     const dispatch = useDispatch();
 
     const getFantasyMovies = async () => {
@@ -15,7 +18,7 @@ const useFantasyMovies = () => {
     }
 
     useEffect(() => {
-        getFantasyMovies();
+        !fantasyMovies && getFantasyMovies();
     }, []);
 }
 

@@ -8,7 +8,7 @@ import usePopularMovies from "../hooks/usePopularMovies";
 import useComedyMovies from "../hooks/useComedyMovies";
 import useFantasyMovies from "../hooks/useFantasyMovies";
 import useClassicMovies from "../hooks/useClassicMovies";
-import useHorrorMovies from "../hooks/useHorroMovies";
+import useHorrorMovies from "../hooks/useHorrorMovies";
 
 
 const Browse = () => {

@@ -1,9 +1,12 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
 import { addHorrorMovies } from '../store/moviesSlice';
 import { API_OPTIONS } from '../assets/constants';
 
 const useHorrorMovies = () => {
+
+    const horrorMovies = useSelector(store => store.movies.horrorMovies);
+
     const dispatch = useDispatch();
 
     const getHorrorMovies = async () => {
@@ -15,7 +18,7 @@ const useHorrorMovies = () => {
     }
 
     useEffect(() => {
-        getHorrorMovies();
+        !horrorMovies && getHorrorMovies();
     }, []);
 }
 
