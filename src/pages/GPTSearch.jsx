@@ -22,7 +22,7 @@ const GPTSearch = () => {
         {/* TITLE */}
         <h1 className="flex items-center gap-3 text-white text-2xl md:text-4xl font-extrabold mb-8">
           {languages[langKey].GPTPageTitle}
-          <img src={MOVIE} alt="Movie Icon" className="w-8 h-8 md:w-9 md:h-9" />
+          <img src={MOVIE} alt="Movie Icon" className="hidden md:block w-8 h-8 md:w-9 md:h-9" />
         </h1>
 
         <GPT_SearchBar />
