@@ -24,8 +24,8 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 px-6 md:px-14 h-[74px] flex items-center justify-between
-     bg-linear-to-b from-black/90 via-black/70 to-transparent backdrop-blur-md">
+    <header className="fixed top-0 left-0 w-full z-50 px-6 md:px-14 h-[88px] flex items-center justify-between
+     bg-linear-to-b from-black/90 to-transparent backdrop-blur-xs">
 
       {/* LOGO */}
 
@@ -62,7 +62,7 @@ const Header = () => {
 
           {/* AVATAR */}
           <img src={user.photoURL} alt="User Avatar"
-            className="w-10 h-10 md:w-11 md:h-11 rounded-lg object-cover border border-white/20 shadow-md"/>
+            className="hidden md:block w-10 h-10 md:w-11 md:h-11 rounded-lg object-cover border border-white/20 shadow-md"/>
 
           {/* SIGN OUT */}
           <button
