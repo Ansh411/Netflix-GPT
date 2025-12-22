@@ -8,7 +8,7 @@ const useOpenRouterMovies = () => {
                     No numbering.
                     No explanations.
                     No extra text.
-                    Give atleast 15 Movies
+                    Give atleast 25 Movies
                     User query: "${userQuery}"`;
     try {
       const response = await openrouter.chat.send({
