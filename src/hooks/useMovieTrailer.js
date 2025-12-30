@@ -1,37 +1,34 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addTrailerVideo } from "../store/moviesSlice";
 import { useEffect } from "react";
-import { API_OPTIONS } from "../assets/constants";
 
 const useMovieTrailer = (movieId) => {
-
   const trailerVideo = useSelector(store => store.movies.trailerVideo);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!movieId) return;
+    if (!movieId || trailerVideo) return;
 
-    const getMovieVideos = async () => {
+    const getMovieTrailer = async () => {
       try {
-        const data = await fetch("https://api.themoviedb.org/3/movie/" + movieId + "/videos?language=en-US",API_OPTIONS);
+        const res = await fetch(
+          `https://netflix-gpt-backend-6ayv.onrender.com/api/movies/${movieId}/trailer`
+        );
 
-        const json = await data.json();
+        if (!res.ok) throw new Error("Trailer fetch failed");
 
-        if (!json?.results?.length) return;
+        const trailer = await res.json();
 
-        const trailers = json.results.filter((video) => video.type === "Trailer" && video.site === "YouTube");
-
-        const trailer = trailers.length? trailers[0] : json.results[0];
+        if (!trailer?.key) return;
 
         dispatch(addTrailerVideo(trailer));
       } catch (err) {
-        console.error("Failed to fetch trailer", err);
+        console.error("Failed to fetch trailer:", err);
       }
     };
-    
-    !trailerVideo && getMovieVideos();
-  }, [movieId, dispatch]);
+
+    getMovieTrailer();
+  }, [movieId, dispatch, trailerVideo]);
 };
 
 export default useMovieTrailer;

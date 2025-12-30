@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
 import { addFantasyMovies } from '../store/moviesSlice';
-import { API_OPTIONS } from '../assets/constants';
+
 
 const useFantasyMovies = () => {
 
@@ -10,7 +10,7 @@ const useFantasyMovies = () => {
     const dispatch = useDispatch();
 
     const getFantasyMovies = async () => {
-        const data = await fetch("https://api.themoviedb.org/3/movie/129/similar?language=en-US&page=1", API_OPTIONS);
+        const data = await fetch("https://netflix-gpt-backend-6ayv.onrender.com/api/movies/fantasy");
 
         const json = await data.json();
 
