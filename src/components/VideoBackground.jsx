@@ -13,7 +13,11 @@ const VideoBackground = ({ movieId }) => {
       <iframe
         className="w-full h-full object-cover scale-110 pointer-events-none"
         src={`https://www.youtube.com/embed/${trailerVideo.key}?autoplay=1&mute=1&vq=720p&controls=0&loop=1&playlist=${trailerVideo.key}`}
-        allow="autoplay; fullscreen"
+        title="YouTube video player" 
+        frameBorder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerPolicy="strict-origin-when-cross-origin" 
+        allowFullScreen
       />
 
       
