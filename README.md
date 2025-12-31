@@ -19,7 +19,7 @@ A modern Netflix-inspired movie streaming UI powered by AI recommendations.
 ## 📸 Screenshots
 
 <div align="center">
-      <img src = "https://i.im.ge/2025/12/31/BZezAp.Signup2.md.png" width ="400" /> 
+      <img src = "https://iili.io/fXLSXTP.md.png" width ="400" /> 
       <img src = "https://i.ibb.co/My9Ydy3W/Login.png" width ="400" /> 
       <br/>
       <img src = "https://i.ibb.co/M3QhdBP/Video-Container.png" width ="400" /> 
