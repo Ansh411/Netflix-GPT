@@ -1,15 +1,15 @@
 <p align="center">
-  <a href="https://github.com/Ansh411/Netflix-GPT">
+  <a href="https://gpt-flix-alpha.vercel.app/w">
     <img src="https://i.ibb.co/wZ6b2Yqd/Netflix-GPT.png" alt="Netflix GPT Logo" />
   </a>
 </p>
 
 <p align="center">
-   <a href="https://gpt-flix-alpha.vercel.app/">
-      <img src = "https://i.ibb.co/0jm1rwYZ/Untitled-design.png" alt="Previews"/>
+   <a href="https://github.com/Ansh411/Netflix-GPT">
+      <img src = "https://i.im.ge/2025/12/31/BZjV6K.Untitled-design.png" alt="Previews"/>
    </a>
 </p>
-
+<!-- https://i.ibb.co/0jm1rwYZ/Untitled-design.png -->
 
 A modern Netflix-inspired movie streaming UI powered by AI recommendations.  
 **Netflix GPT** combines real-time movie data from TMDB with AI-driven suggestions using OpenRouter to deliver a smart, interactive movie discovery experience.
