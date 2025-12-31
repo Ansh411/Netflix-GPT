@@ -4,6 +4,8 @@
   </a>
 </p>
 
+<!-- Previews -->
+
 <div align="center">
       <img src = "https://i.ibb.co/Df0xvK24/Signup.png" width ="400" /> 
       <img src = "https://i.ibb.co/My9Ydy3W/Login.png" width ="400" /> 
