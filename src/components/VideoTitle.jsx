@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { INFO, PLAY } from "../assets/constants";
 import useFanartLogo from "../hooks/useFanartLogo";
 
@@ -20,7 +21,7 @@ const VideoTitle = ({ title, overview, movieId }) => {
             className="mb-6 drop-shadow-2xl transition-all duration-300 ease-out 
             max-w-[180px] translate-x-0 
             min-[400px]:max-w-[260px] min-[400px]:-translate-x-5
-            md:max-w-[420px] md:-translate-x-12"/>
+            md:max-w-[420px] md:-translate-x-2"/>
         ) : (
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold">
             {title}
@@ -28,21 +29,23 @@ const VideoTitle = ({ title, overview, movieId }) => {
         )}
 
         {/* Overview (desktop only) */}
-        <p className="hidden lg:block mt-6 text-gray-200 line-clamp-4">
+        <p className="hidden lg:block mt-6 text-gray-200 line-clamp-4 max-w-[65ch]">
           {overview}
         </p>
 
         {/* ACTION BUTTONS */}
         <div className="flex gap-4 mt-6">
-          <button className="flex items-center gap-2 bg-white text-black cursor-pointer px-6 py-3 rounded-md font-semibold hover:bg-gray-200 transition">
+          <Link to={`/movie/${movieId}`}><button className="flex items-center gap-2 bg-white text-black cursor-pointer px-6 py-3 rounded-md font-semibold hover:bg-gray-200 transition">
             <img src={PLAY} className="w-6" />
             Play
           </button>
+          </Link>
 
-          <button className="flex items-center gap-2 bg-gray-600/60 cursor-pointer text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-600 transition">
+          <Link to={`/movie/${movieId}`}><button className="flex items-center gap-2 bg-gray-600/60 cursor-pointer text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-600 transition">
             <img src={INFO} className="w-6" />
             More Info
           </button>
+          </Link>
         </div>
 
       </div>

@@ -3,12 +3,14 @@ import GPT_SearchBar from "../components/GPT/GPT_SearchBar";
 import { BANNER_IMG, MOVIE } from "../assets/constants.js";
 import languages from "../utils/LanguageConstants.js";
 import { useSelector } from "react-redux";
+import Header from "../components/Header.jsx";
 
 const GPTSearch = () => {
   const langKey = useSelector((store) => store.langauge.lang);
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
+      <Header/>
 
       {/* BACKGROUND */}
       <img src={BANNER_IMG} alt="BG-IMG" aria-hidden className="absolute inset-0 w-full h-full object-cover"/>

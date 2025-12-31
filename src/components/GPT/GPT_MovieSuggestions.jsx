@@ -30,7 +30,7 @@ const GPT_MovieSuggestions = () => {
       <div
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-6 gap-y-10 justify-items-center animate fadeIn">
         {movieResults.map(movie => (
-          <MovieCard key={movie.id} posterPath={movie.poster_path} />
+          <MovieCard key={movie.id} movieId={movie.id} posterPath={movie.poster_path} isGPTPage={true} />
         ))}
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { API_OPTIONS, SEARCH } from "../../assets/constants";
+import { SEARCH } from "../../assets/constants";
 import languages from "../../utils/LanguageConstants";
 import { useRef } from "react";
 import useOpenRouterMovies from "../../hooks/useOpenRouterMovies";
@@ -17,53 +17,63 @@ const GPT_SearchBar = () => {
   const { getMovieRecommendations } = useOpenRouterMovies();
 
   const searchMovieTMDB = async (movieName) => {
+    try{
 
-    const data = await fetch("https://api.themoviedb.org/3/search/movie?query=" + movieName + "&include_adult=false&language=en-US&page=1", API_OPTIONS);
+      const res = await fetch(`https://netflix-gpt-backend-6ayv.onrender.com/api/movies/search?q=${encodeURIComponent(movieName)}`);
 
-    const json = await data.json();
+      if(!res.ok) return null;
 
-    if (!json?.results?.length) return null;
+      const json = await res.json();
 
-    const normalizedMovieName = movieName.trim().toLowerCase();
+      if(!json.results?.length) return null;
 
-    // 🎯 Exact match + language + poster
-    const exactMatch = json.results.find((movie) => {
+      const normalizedMovieName = movieName.trim().toLowerCase();
 
-    const titleMatch = movie?.title?.toLowerCase() === normalizedMovieName || movie?.original_title?.toLowerCase() === normalizedMovieName;
+      const exactMatch = json.results.find((movie) => {
 
-    const languageMatch = movie?.original_language === "hi" || movie?.original_language === "en";
+      const titleMatch = movie?.title?.toLowerCase() === normalizedMovieName || movie?.original_title?.toLowerCase() === normalizedMovieName;
 
-    const hasPoster = Boolean(movie?.poster_path);
+      const languageMatch = movie?.original_language === "hi" || movie?.original_language === "en";
 
-    return titleMatch && languageMatch && hasPoster;
+      const hasPoster = Boolean(movie?.poster_path);
+
+      return titleMatch && languageMatch && hasPoster;
   });
 
-  return exactMatch || null;
+    return exactMatch || null;
     
-  };
+  } catch(err){
+    console.error("TMDB Backend Error: ", err);
+    return null;
+  }
+};
 
   const handleGPTSearchClick = async () => {
-    
-      if (!searchText.current?.value) return;
 
       const query = searchText?.current?.value;
+    
+      if (!query) return;
 
       dispatch(addSearchText(query));
 
       dispatch(startGPTLoading());
 
-      const gptMovies = await getMovieRecommendations(capitalize(query));
+      try{
 
-      const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
+        const gptMovies = await getMovieRecommendations(capitalize(query));
 
-      const TMDB_Results = await Promise.all(promiseArray);
+        const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
 
-      const finalMovies = TMDB_Results.filter(Boolean);
+        const TMDB_Results = await Promise.all(promiseArray);
 
-      console.log("FINAL MOVIES:", finalMovies);
+        const finalMovies = TMDB_Results.filter(Boolean);
 
-      dispatch(addGPTMovieResult({movieNames: gptMovies , movieResults : finalMovies}));
-      
+        dispatch(addGPTMovieResult({movieNames: gptMovies , movieResults : finalMovies}));
+
+      } catch (err) {
+        console.error("GPT Search Failed: ", err);
+
+      }
     }; 
   
 

@@ -3,17 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const GPTSlice = createSlice({
     name: "GPT",
     initialState : {
-        showGPTSearch : false,
         GPTSearchText : "",
         movieResults : null,
         movieNames : null,
         isLoading: false,
     },
     reducers : {
-        toggleGPTSearchView : (state) => {
-            state.showGPTSearch = !state.showGPTSearch;
-        },
-
         startGPTLoading : (state) => {
             state.isLoading = true;
         },
@@ -31,6 +26,6 @@ const GPTSlice = createSlice({
     },
 });
 
-export const { toggleGPTSearchView, startGPTLoading, addSearchText, addGPTMovieResult } = GPTSlice.actions;
+export const { startGPTLoading, addSearchText, addGPTMovieResult } = GPTSlice.actions;
 
 export default GPTSlice.reducer;
