@@ -1,16 +1,151 @@
-# React + Vite
+<p align="center">
+  <img src="https://i.ibb.co/wZ6b2Yqd/Netflix-GPT.png" alt="Netflix GPT Logo" />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+A modern Netflix-inspired movie streaming UI powered by AI recommendations.  
+**Netflix GPT** combines real-time movie data from TMDB with AI-driven suggestions using OpenRouter to deliver a smart, interactive movie discovery experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🌐 **Live Demo:** https://gpt-flix-alpha.vercel.app/
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🎥 Netflix-style movie browsing experience
+- 🤖 AI-powered movie recommendations (GPT)
+- 🔍 Smart search with natural language prompts
+- 🎬 Movie trailer autoplay with sound control
+- 📱 Fully responsive (mobile & desktop)
+- ❤️ Watchlist functionality
+- 🔐 Firebase Authentication (Login / Logout)
+- 🎭 Cast carousel for each movie
+- 🔄 Similar movies recommendations
+- 🌙 Modern UI with Tailwind CSS
+- ⚡ Fast performance with Vite + React
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🔐 Authentication
+
+This project uses **Firebase Authentication** to handle:
+
+- User sign-up & login
+- Secure session handling
+- Auth-based access to watchlist and personalization
+
+Firebase ensures scalable, secure, and production-ready authentication.
+
+---
+
+## 🧠 AI Recommendation System (Netflix GPT)
+
+This project integrates **AI-based movie recommendations** using **OpenRouter**.
+
+### How it works:
+1. User enters a natural language prompt  
+   *(e.g. “Suggest feel-good sci-fi movies”)*  
+2. Prompt is sent to **OpenRouter**
+3. OpenRouter routes the request to a Large Language Model (LLM)
+4. AI returns a list of movie titles
+5. Titles are matched with **TMDB** data
+6. Results are displayed as interactive movie cards
+
+This makes movie discovery **context-aware**, **personalized**, and **intelligent**.
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React 19**
+- **Vite**
+- **React Router DOM**
+- **Redux Toolkit**
+- **Tailwind CSS**
+- **JavaScript (ES6+)**
+
+### State Management
+- Redux Toolkit
+- Custom Redux slices:
+  - Movies
+  - Watchlist
+  - Video (mute / unmute)
+  - GPT recommendations
+
+### Authentication
+- **Firebase Authentication**
+
+### APIs & Services
+- **TMDB (The Movie Database) API**
+- **OpenRouter API (AI recommendations)**
+- **FanArt.tv API (logos & branding)**
+
+### Hosting
+- **Frontend:** Vercel  
+- **Backend:** Render
+---
+
+## 📱 UI Components
+
+- Hero video background with autoplay trailer
+- Floating mobile controls (Play / Watchlist / Mute)
+- Meta info row (runtime, genres, rating)
+- Cast carousel
+- Similar movies section
+- AI recommendation results grid
+
+
+---
+
+## 📁 Project Structure (Simplified)
+
+```text
+src/
+│── components/
+│   ├── Header
+│   ├── VideoBackground
+│   ├── MovieInfo
+│   ├── MetaInfoRow
+│   ├── CastCarousel
+│   ├── FloatingControls
+│   └── SimilarMovies
+│
+│── hooks/
+│   ├── useMovieTrailer
+│   ├── useMovieDetails
+│   └── useGPTMovies
+│
+│── store/
+│   ├── appStore
+│   ├── movieSlice
+│   ├── watchlistSlice
+│   └── videoSlice
+│
+│── pages/
+│   └── MovieDetails
+
+```
+
+## 🧪 Future Enhancements
+
+
+- Personalized watch history
+
+- Improved GPT prompt tuning
+
+- Server-side caching
+
+- Dark/Light theme toggle
+
+## 👨‍💻 Author
+
+**Ansh Gupta** <br/>
+
+<i>Aspiring Full-Stack & AI Engineer</i>
+
+⭐ If you like this project ❤️
+
+**Give it a ⭐ on GitHub — it helps a lot!**
+
+---
