@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<!-- Previews -->
+<!-- Previews of The Project -->
 
 <div align="center">
       <img src = "https://i.ibb.co/Df0xvK24/Signup.png" width ="400" /> 
