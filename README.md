@@ -1,5 +1,13 @@
 <p align="center">
-  <img src="https://i.ibb.co/wZ6b2Yqd/Netflix-GPT.png" alt="Netflix GPT Logo" />
+  <a href="https://github.com/Ansh411/Netflix-GPT">
+    <img src="https://i.ibb.co/wZ6b2Yqd/Netflix-GPT.png" alt="Netflix GPT Logo" />
+  </a>
+</p>
+
+<p align="center">
+   <a href="https://gpt-flix-alpha.vercel.app/">
+      <img src = "https://i.ibb.co/0jm1rwYZ/Untitled-design.png" alt="Previews"/>
+   </a>
 </p>
 
 
