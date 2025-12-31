@@ -1,13 +1,25 @@
 <p align="center">
   <a href="https://gpt-flix-alpha.vercel.app/">
-    <img src="https://i.ibb.co/wZ6b2Yqd/Netflix-GPT.png" alt="Netflix GPT Logo" />
+    <img src="https://i.ibb.co/wZ6b2Yqd/Netflix-GPT.png" alt="Netflix GPT Logo" width="430" />
   </a>
 </p>
+<h2 align="center">
+    <b>🎬 <i>'Netflix-GPT '</i> -&ensp;Netflix-Inspired UI with AI Recommendations</b>
+</h2>
+
+A modern Netflix-inspired movie streaming UI powered by AI recommendations.  
+**Netflix GPT** combines real-time movie data from TMDB with AI-driven suggestions using OpenRouter to deliver a smart, interactive movie discovery experience.
+
+🌐 **Live Demo:** https://gpt-flix-alpha.vercel.app/
+
+
 
 <!-- Previews of The Project -->
 
+## 📸 Screenshots
+
 <div align="center">
-      <img src = "https://i.ibb.co/BHkdsPgw/Signup2.png" width ="400" /> 
+      <img src = "https://i.im.ge/2025/12/31/BZezAp.Signup2.md.png" width ="400" /> 
       <img src = "https://i.ibb.co/My9Ydy3W/Login.png" width ="400" /> 
       <br/>
       <img src = "https://i.ibb.co/M3QhdBP/Video-Container.png" width ="400" /> 
@@ -18,14 +30,6 @@
       <br/>
 </div>
 <br/><hr/>
-
-
-A modern Netflix-inspired movie streaming UI powered by AI recommendations.  
-**Netflix GPT** combines real-time movie data from TMDB with AI-driven suggestions using OpenRouter to deliver a smart, interactive movie discovery experience.
-
-🌐 **Live Demo:** https://gpt-flix-alpha.vercel.app/
-
----
 
 ## 🚀 Features
 

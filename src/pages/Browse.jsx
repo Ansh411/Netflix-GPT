@@ -12,6 +12,8 @@ import useHorrorMovies from "../hooks/useHorrorMovies";
 import useRomanceMovies from "../hooks/useRomanceMovies";
 import useDocumentaries from "../hooks/useDocumentaries";
 import useComedyMovies from "../hooks/useComedyMovies";
+import { useSelector } from "react-redux";
+import Loader_Browse from "../components/Loader_Browse";
 
 const Browse = () => {
   useNowPlayingMovies();
@@ -25,6 +27,12 @@ const Browse = () => {
   useComedyMovies();
   useRomanceMovies();
   useDocumentaries();
+
+  const loading = useSelector((store) => store.movies.loading);
+
+  if (loading) {
+    return <Loader_Browse />;
+  }
 
   return (
     <div>
