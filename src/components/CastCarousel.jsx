@@ -32,7 +32,7 @@ const CastCarousel = ({ movieId }) => {
           >
             <img
               loading="lazy"
-              src={person.profile_path ? IMG_CDN_URL + person.profile_path : "https://i.ibb.co/LzNm8D37/images.png"}
+              src={person.profile_path ? IMG_CDN_URL + person.profile_path : "https://i.im.ge/2025/12/31/BKwwSz.istockphoto-1055079680-612x612.jpeg"}
               alt={person.name}
               className="w-full h-40 sm:h-[190px] object-cover rounded-lg mb-2 cursor-pointer transition duration-300 hover:scale-105"
             />
@@ -51,3 +51,5 @@ const CastCarousel = ({ movieId }) => {
 };
 
 export default CastCarousel;
+
+// https://i.ibb.co/LzNm8D37/images.png
