@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://gpt-flix-alpha.vercel.app/w">
+  <a href="https://gpt-flix-alpha.vercel.app/">
     <img src="https://i.ibb.co/wZ6b2Yqd/Netflix-GPT.png" alt="Netflix GPT Logo" />
   </a>
 </p>
