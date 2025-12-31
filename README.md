@@ -4,12 +4,19 @@
   </a>
 </p>
 
-<p align="center">
-   <a href="https://github.com/Ansh411/Netflix-GPT">
-      <img src = "https://i.im.ge/2025/12/31/BZjV6K.Untitled-design.png" alt="Previews"/>
-   </a>
-</p>
-<!-- https://i.ibb.co/0jm1rwYZ/Untitled-design.png -->
+<div align="center">
+      <img src = "https://i.ibb.co/Df0xvK24/Signup.png" width ="400" /> 
+      <img src = "https://i.ibb.co/My9Ydy3W/Login.png" width ="400" /> 
+      <br/>
+      <img src = "https://i.ibb.co/M3QhdBP/Video-Container.png" width ="400" /> 
+      <img src = "https://i.ibb.co/4ZDKnHTw/Movies-Container.png" width ="400" /> 
+      <br/> 
+      <img src = "https://i.ibb.co/HLGczvyx/Movie-Details.png" width ="400" />
+      <img src = "https://i.ibb.co/JjWK1Lnk/GPT.png" width ="400" /> 
+      <br/>
+</div>
+<br/><hr/>
+
 
 A modern Netflix-inspired movie streaming UI powered by AI recommendations.  
 **Netflix GPT** combines real-time movie data from TMDB with AI-driven suggestions using OpenRouter to deliver a smart, interactive movie discovery experience.
