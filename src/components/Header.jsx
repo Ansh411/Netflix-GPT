@@ -27,6 +27,7 @@ const Header = () => {
   const isBrowse = location.pathname === "/browse";
   const isGPT = location.pathname === "/gpt-search";
   const isMovie = location.pathname.startsWith("/movie/");
+  const isTV = location.pathname.startsWith("/tv/");
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 md:px-14 h-[88px] flex items-center justify-between
@@ -56,7 +57,7 @@ const Header = () => {
           )}
 
           {/* GPT SEARCH BUTTON */}
-          {(isBrowse || isMovie) && (
+          {(isBrowse || isMovie || isTV) && (
             <button
               onClick={() => navigate("/gpt-search")}
               className="px-3 sm:px-4 md:px-5 py-1 sm:py-2 md:py-2.5 rounded-lg text-xs sm:text-sm md:text-base font-semibold cursor-pointer text-white
@@ -67,7 +68,7 @@ const Header = () => {
           )}
 
           {/* HOME BUTTON */}
-          {(isGPT || isMovie) && (
+          {(isGPT || isMovie || isTV) && (
             <button
               onClick={() => navigate("/browse")}
               className="px-3 sm:px-4 md:px-5 py-1 sm:py-2 md:py-2.5 rounded-lg text-xs sm:text-sm md:text-base font-semibold cursor-pointer text-white

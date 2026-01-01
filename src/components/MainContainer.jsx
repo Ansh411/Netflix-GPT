@@ -11,42 +11,45 @@ const MainContainer = () => {
 
   useEffect(() => {
     dispatch(setMuted(true));
-  },[dispatch]);
+  }, [dispatch]);
 
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
-  const trailersByMovieId = useSelector(
+  const tvShows = useSelector((store) => store.tv?.onTheAir);
+
+  const trailersById = useSelector(
     (store) => store.movies?.trailersByMovieId
   );
 
-  const [mainMovie, setMainMovie] = useState(null);
+  const [hero, setHero] = useState(null);
+  const [type, setType] = useState("movie");
 
   useEffect(() => {
-    if (!movies?.length) return;
+    if (!movies?.length && !tvShows?.length) return;
 
-    const randomIndex = Math.floor(Math.random() * movies.length);
-    setMainMovie(movies[randomIndex]);
-  }, [movies]);
+    const isTV = Math.random() > 0.5 && tvShows?.length;
+    const list = isTV ? tvShows : movies;
 
-  // ⬅️ FETCH TRAILER HERE
-  useMovieTrailer(mainMovie?.id);
+    setHero(list[Math.floor(Math.random() * list.length)]);
+    setType(isTV ? "tv" : "movie");
+  }, [movies, tvShows]);
 
-  if (!mainMovie) return null;
+  useMovieTrailer(hero?.id, type);
 
-  const trailer = trailersByMovieId?.[mainMovie.id];
+  if (!hero) return null;
 
-  // ✅ Loader now works correctly
+  const trailer = trailersById?.[hero.id];
+
   if (!trailer?.key) {
     return <VideoLoader />;
   }
 
-  const { title, overview, id } = mainMovie;
-
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      <VideoBackground movieId={id} />
-      <VideoTitle title={title} overview={overview} movieId={id} />
+      <VideoBackground id={hero.id} type={type} />
+      <VideoTitle media={hero} type={type} />
     </div>
   );
 };
 
 export default MainContainer;
+

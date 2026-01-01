@@ -1,9 +1,11 @@
 import { useSelector } from "react-redux";
-import MoviesList from "./MoviesList";
+import MediaList from "./MediaList";
 
 const SecondaryContainer = () => {
   const movies = useSelector((store) => store.movies);
-  if (!movies) return null;
+  const tv = useSelector((store) => store.tvShows);
+
+  if (!movies && !tv) return null;
 
   return (
     <div className="relative z-30 -mt-[35vh]">
@@ -13,17 +15,21 @@ const SecondaryContainer = () => {
 
       {/* 🎬 CONTENT ZONE */}
       <div className="bg-black px-4 md:px-8 pb-24">
-        <MoviesList title="Now Playing" movies={movies.nowPlayingMovies} />
-        <MoviesList title="Top Rated" movies={movies.topRatedMovies} />
-        <MoviesList title="Classics" movies={movies.classicMovies} />
-        <MoviesList title="Horror" movies={movies.horrorMovies} />
-        <MoviesList title="Upcoming" movies={movies.upcomingMovies} />
-        <MoviesList title="Crime" movies={movies.crimeMovies} />
-        <MoviesList title="Anime & Fantasy" movies={movies.fantasyMovies} />
-        <MoviesList title="Documentary" movies={movies.documentaries} />
-        <MoviesList title="Romance" movies={movies.romanceMovies} />
-        <MoviesList title="Comedy" movies={movies.comedyMovies} />
-        <MoviesList title="Popular" movies={movies.popularMovies} />
+        {/* 🎬 MOVIES */}
+        <MediaList title="Now Playing" items={movies.nowPlayingMovies} type="movie"  />
+        <MediaList title="Popular TV" items={tv.popularTV} type="tv" />
+        <MediaList title="Top Rated" items={movies.topRatedMovies} type="movie" />
+        <MediaList title="Top Rated TV" items={tv.topRatedTV} type="tv" />
+        <MediaList title="Classics" items={movies.classicMovies} type="movie" />
+        <MediaList title="On The Air" items={tv.onTheAir} type="tv" /> 
+        <MediaList title="Horror" items={movies.horrorMovies} type="movie" />  
+        <MediaList title="Upcoming" items={movies.upcomingMovies} type="movie" />
+        <MediaList title="Crime" items={movies.crimeMovies}type="movie"  />
+        <MediaList title="Anime & Fantasy" items={movies.fantasyMovies}type="movie"  />
+        <MediaList title="Documentary" items={movies.documentaries} type="movie" />
+        <MediaList title="Romance" items={movies.romanceMovies} type="movie" />
+        <MediaList title="Comedy" items={movies.comedyMovies} type="movie" />
+        <MediaList title="Popular" items={movies.popularMovies} type="movie" />     
       </div>
 
     </div>
@@ -31,3 +37,4 @@ const SecondaryContainer = () => {
 };
 
 export default SecondaryContainer;
+
