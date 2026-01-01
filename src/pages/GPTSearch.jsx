@@ -1,4 +1,4 @@
-import GPT_MovieSuggestions from "../components/GPT/GPT_MovieSuggestions";
+import GPT_Suggestions from "../components/GPT/GPT_Suggestions";
 import GPT_SearchBar from "../components/GPT/GPT_SearchBar";
 import { BANNER_IMG, MOVIE } from "../assets/constants.js";
 import languages from "../utils/LanguageConstants.js";
@@ -28,7 +28,7 @@ const GPTSearch = () => {
         </h1>
 
         <GPT_SearchBar />
-        <GPT_MovieSuggestions />
+        <GPT_Suggestions />
       </div>
     </div>
   );
