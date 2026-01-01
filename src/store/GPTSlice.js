@@ -1,31 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const GPTSlice = createSlice({
-    name: "GPT",
-    initialState : {
-        GPTSearchText : "",
-        movieResults : null,
-        movieNames : null,
-        isLoading: false,
+  name: "GPT",
+  initialState: {
+    GPTSearchText: "",
+    results: null,
+    names: null,
+    isLoading: false,
+    searchType: "both"
+  },
+  reducers: {
+    startGPTLoading: (state) => {
+      state.isLoading = true;
     },
-    reducers : {
-        startGPTLoading : (state) => {
-            state.isLoading = true;
-        },
-
-        addSearchText : (state, action) => {
-            state.GPTSearchText = action.payload;
-        },
-
-        addGPTMovieResult : (state, action) => {
-            const { movieNames , movieResults } = action.payload;
-            state.movieNames = movieNames;
-            state.movieResults = movieResults;
-            state.isLoading = false;
-        },
+    addSearchText: (state, action) => {
+      state.GPTSearchText = action.payload;
     },
+    addGPTResults: (state, action) => {
+      const { names, results } = action.payload;
+      state.names = names;
+      state.results = results;
+      state.isLoading = false;
+    },
+    setSearchType: (state, action) => {
+      state.searchType = action.payload;
+    }
+  }
 });
 
-export const { startGPTLoading, addSearchText, addGPTMovieResult } = GPTSlice.actions;
+
+export const { startGPTLoading, addSearchText, addGPTResults, setSearchType } = GPTSlice.actions;
 
 export default GPTSlice.reducer;
