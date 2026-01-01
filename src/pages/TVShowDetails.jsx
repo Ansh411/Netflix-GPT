@@ -5,15 +5,16 @@ import { useEffect } from "react";
 import Header from "../components/Header";
 import VideoBackground from "../components/VideoBackground";
 import VideoLoader from "../components/VideoLoader";
-import MovieInfo from "../components/Movies/MovieInfo";
-import SimilarMovies from "../components/Movies/SimilarMovies";
-import CastCarouselMovies from "../components/Movies/CastCarouselMovies";
-import MetaInfoRow from "../components/Movies/MetaInfoRow";
+import TVShowInfo from "../components/TV Shows/TVShowInfo";
+import SimilarTVShows from "../components/TV Shows/SimilarTVShows";
+import CastCarouselTV from "../components/TV Shows/CastCarouselTV";
+import MetaInfoTV from "../components/TV Shows/MetaInfoTV";
 
-import useMovieTrailer from "../hooks/useMovieTrailer";
+import useTrailersTV from "../hooks/TvShows Hooks/useTrailersTV";
 import { setMuted } from "../store/videoSlice";
 
-const MovieDetails = () => {
+
+const TVShowDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -23,9 +24,9 @@ const MovieDetails = () => {
   }, [dispatch]);
 
   // 🎬 Fetch trailer
-  useMovieTrailer(id);
+  useTrailersTV(id);
 
-  const trailer = useSelector((store) => store.movies?.trailersByMovieId?.[id]);
+  const trailer = useSelector((store) => store.tvShows?.trailersTV?.[id]);
 
 
   return (
@@ -37,34 +38,32 @@ const MovieDetails = () => {
         {!trailer?.key ? (
           <VideoLoader />
         ) : (
-          <VideoBackground id={id} type="movie" />
+          <VideoBackground id={id} type="tv" />
         )}
       </div>
       <div className="relative z-30 -mt-[18vh] sm:-mt-[22vh] md:-mt-[28vh]">
-        
       {/* MOVIE DESCRIPTION */}
         <div className="mb-6">
-          <MovieInfo movieId={id} />
+          <TVShowInfo tvshowId={id} />
         </div>
 
       {/* META INFO */}
         <div className="pb-4 border-b border-white/10">
-          <MetaInfoRow movieId={id} />
+          <MetaInfoTV tvShowId={id} />
         </div>
     </div>
 
-
        {/* CAST */}
       <div className="mt-10">
-        <CastCarouselMovies movieId={id} />
+        <CastCarouselTV tvShowId={id} />
       </div>
 
       {/* SIMILAR */}
       <div className="relative z-30 mt-12">
-        <SimilarMovies movieId={id} />
+        <SimilarTVShows tvShowId={id} />
       </div>
   </div>
   );
 };
 
-export default MovieDetails;
+export default TVShowDetails;
