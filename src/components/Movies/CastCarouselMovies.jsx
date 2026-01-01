@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { IMG_CDN_URL } from "../assets/constants";
+import { IMG_CDN_URL } from "../../assets/constants";
 
-const CastCarousel = ({ movieId }) => {
+const FALLBACK_IMG = "https://i.im.ge/2025/12/31/BKwwSz.istockphoto-1055079680-612x612.jpeg";
+
+const CastCarouselMovies = ({ movieId }) => {
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
@@ -28,16 +30,16 @@ const CastCarousel = ({ movieId }) => {
         {cast.slice(0, 15).map((person) => (
           <div
             key={person.id}
-            className="min-w-[110px] sm:min-w-[130px]"
+            className="shrink-0 min-w-[110px] sm:min-w-[130px]"
           >
-            <img
-              loading="lazy"
-              src={person.profile_path ? IMG_CDN_URL + person.profile_path : "https://i.im.ge/2025/12/31/BKwwSz.istockphoto-1055079680-612x612.jpeg"}
-              alt={person.name}
-              className="w-full h-40 sm:h-[190px] object-cover rounded-lg mb-2 cursor-pointer transition duration-300 hover:scale-105"
-            />
+            <div className="w-full h-40 sm:h-[190px] overflow-hidden rounded-lg">
+              <img loading="lazy"
+                src={person.profile_path ? IMG_CDN_URL + person.profile_path : FALLBACK_IMG}
+                alt={person.name}
+                className="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105"/>
+            </div>
 
-            <p className="text-xs sm:text-sm font-medium truncate">
+            <p className="mt-2 text-xs sm:text-sm font-medium truncate">
               {person.name}
             </p>
             <p className="text-[10px] sm:text-xs text-gray-400 truncate">
@@ -50,6 +52,4 @@ const CastCarousel = ({ movieId }) => {
   );
 };
 
-export default CastCarousel;
-
-// https://i.ibb.co/LzNm8D37/images.png
+export default CastCarouselMovies;
