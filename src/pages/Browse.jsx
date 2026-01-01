@@ -12,6 +12,12 @@ import useHorrorMovies from "../hooks/useHorrorMovies";
 import useRomanceMovies from "../hooks/useRomanceMovies";
 import useDocumentaries from "../hooks/useDocumentaries";
 import useComedyMovies from "../hooks/useComedyMovies";
+
+// 📺 TV
+import usePopularTV from "../hooks/TvShows Hooks/usePopularTV";
+import useTopRatedTV from "../hooks/TvShows Hooks/useTopRatedTV";
+import useOnTheAir from "../hooks/TvShows Hooks/useOnTheAir";
+
 import { useSelector } from "react-redux";
 import Loader_Browse from "../components/Loader_Browse";
 
@@ -26,6 +32,9 @@ const Browse = () => {
   useFantasyMovies();
   useComedyMovies();
   useRomanceMovies();
+  usePopularTV();
+  useTopRatedTV();
+  useOnTheAir();
   useDocumentaries();
 
   const loading = useSelector((store) => store.movies.loading);
