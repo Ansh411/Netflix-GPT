@@ -16,7 +16,9 @@ export const PLAY = "https://i.ibb.co/G484tVf9/play-1.png";
 export const INFO = "https://i.ibb.co/BHVCQ5jy/info-1.png";
 //  "https://i.ibb.co/GfzFwhry/info-2.png";
 
-export const SEARCH = "https://i.ibb.co/1tPDcNDS/Search.png";
+export const SEARCH_GPT = "https://i.ibb.co/J8ZR35C/magnifying-glass-1.png";
+
+export const SEARCH = "https://i.ibb.co/snkcpkF/interface.png";
 
 export const MOVIE = "https://i.ibb.co/WvM5m45x/Movie.png";
 // https://i.ibb.co/rRR7hbHm/cinema.png

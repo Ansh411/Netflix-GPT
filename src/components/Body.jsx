@@ -8,6 +8,7 @@ import MovieDetails from "../pages/MovieDetails.jsx";
 import GPTSearch from "../pages/GPTSearch.jsx";
 import Player from "../pages/Player.jsx";
 import TVShowDetails from "../pages/TVShowDetails.jsx";
+import SearchResults from "../pages/SearchResults.jsx";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -34,6 +35,10 @@ const Body = () => {
     {
       path: "/tv/:id",
       element: <ProtectedRoute><TVShowDetails /></ProtectedRoute>
+    },
+    {
+      path: "/search",
+      element: <ProtectedRoute><SearchResults /></ProtectedRoute>,
     },
     {
       path: "/player/movie/:id",
