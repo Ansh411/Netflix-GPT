@@ -34,3 +34,33 @@ export const AVATARS = [
 "https://i.pinimg.com/1200x/9c/e9/2a/9ce92a2effca3b2561bebf8a0ca35d57.jpg",
 
 ];
+
+const ErrorImages = [
+
+    "https://i.ibb.co/TpGHxnh/error.gif",
+    "https://i.ibb.co/pjgHWhCn/uc-unity.gif",
+    "https://i.ibb.co/snKnkv8/susi.gif",
+    "https://i.ibb.co/bMZ5dkLX/penguin-self-care.gif",
+    "https://i.ibb.co/dsxGXJJx/spaceship-office.gif",
+    // "https://i.ibb.co/7Jb59NBC/moonbird-moonbirds.gif",
+    // "https://i.ibb.co/YBN70XnK/mmt-error-error.gif",
+    "https://i.ibb.co/8D03Dbjp/404.gif",
+    "https://i.ibb.co/kVW2ZSqj/maintenance-under-maintenance.gif",
+    // "https://i.ibb.co/xqz6gYFD/404-not-found.gif",
+    "https://i.ibb.co/TBqxkSC9/error-bug.gif",
+    "https://i.ibb.co/7x7wHSVf/errorgif-error.gif",
+    // "https://i.ibb.co/RKKN1SX/error404moment-error404.gif",
+    "https://i.ibb.co/nqtgdnYg/error-404-404.gif",
+    // "https://i.ibb.co/LDS1TsbC/error404.gif", 
+    // "https://i.ibb.co/pv7mQ11X/erro.gif", 
+    "https://i.ibb.co/HLKqNtcN/bloodbros-error.gif", 
+    // "https://i.ibb.co/tPLXCWV4/benjammins-404.gif",
+    "https://i.ibb.co/jvG5Xptf/agenturleben-agencylife.gif",
+
+
+];
+
+export const getRandomErrorImg = () => {
+  return ErrorImages[Math.floor(Math.random() * ErrorImages.length)];
+};
+
