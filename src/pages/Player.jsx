@@ -47,3 +47,30 @@ const Player = ({ type }) => {
 };
 
 export default Player;
+
+// import { useParams } from "react-router-dom";
+// import { useEffect } from "react";
+
+// const Player = ({ type }) => {
+//   const { id } = useParams();
+
+//   useEffect(() => {
+//     if (!id || !type) return;
+
+//     // Build Cineby URL
+//     const cinebyUrl = `https://www.cineby.gd/${type}/${id}?play=true`;
+
+//     if (confirm("You are leaving the app to play this title.")) {
+//       window.open(cinebyUrl, "_blank", "noopener,noreferrer");
+//     }
+//   }, [id, type]);
+
+//   // Optional fallback UI while redirecting
+//   return (
+//     <div className="w-screen h-screen bg-black flex items-center justify-center text-white text-lg">
+//       Redirecting to player...
+//     </div>
+//   );
+// };
+
+// export default Player;
