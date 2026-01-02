@@ -67,7 +67,7 @@ const MetaInfoTV = ({ tvShowId }) => {
         {genres.map((genre) => (
           <span
             key={genre}
-            className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-xs sm:text-sm text-gray-200 hover:bg-white/20 transition"
+            className="px-3 py-1 rounded-full cursor-pointer bg-white/10 backdrop-blur-md border border-white/10 text-xs sm:text-sm text-gray-200 hover:bg-white/20 transition"
           >
             {genre}
           </span>

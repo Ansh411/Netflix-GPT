@@ -35,8 +35,14 @@ const MovieInfo = ({ movieId }) => {
       )}
 
       {/* ⭐ META INFO */}
-      <p className="text-xs sm:text-sm text-zinc-100 my-3">
-        ⭐ {movie.vote_average.toFixed(1)} • {movie.release_date}
+      <p className="text-xs sm:text-sm text-zinc-100 my-3 flex flex-wrap items-center gap-x-3 gap-y-1">
+        <span className="flex items-center gap-1">
+          ⭐ {movie.vote_average?.toFixed(1)}
+        </span>
+
+        <span className="opacity-70">•</span>
+
+        <span>{movie.release_date}</span>
       </p>
 
       {/* 📝 OVERVIEW (HIDDEN ON SMALL SCREENS) */}

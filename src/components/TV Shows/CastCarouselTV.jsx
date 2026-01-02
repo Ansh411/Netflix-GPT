@@ -37,7 +37,7 @@ const CastCarouselTV = ({ tvShowId }) => {
                 loading="lazy"
                 src={person.profile_path ? IMG_CDN_URL + person.profile_path : FALLBACK_IMG}
                 alt={person.name}
-                className="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105"/>
+                className="w-full h-full object-cover object-center cursor-pointer transition-transform duration-300 hover:scale-105"/>
             </div>
 
             <p className="mt-2 text-xs sm:text-sm font-medium truncate">
