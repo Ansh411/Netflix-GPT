@@ -1,13 +1,13 @@
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Loader from "../components/Loader";
+import Loader_Browse from "../components/Loader_Browse";
 
 const PublicRoute = ({ children }) => {
 
   const {data: user, loading} = useSelector((store) => store.user);
 
   if(loading) {
-    return <Loader />;
+    return <Loader_Browse />;
   }
 
   if(user) {
