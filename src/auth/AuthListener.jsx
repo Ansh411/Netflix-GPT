@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
-import { addUser, removeUser } from "../store/userSlice";
+import { addUser, removeUser, setAuthLoading } from "../store/userSlice";
 
 const AuthListener = () => {
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+
+    dispatch(setAuthLoading(true));
+    
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName, photoURL } = user;

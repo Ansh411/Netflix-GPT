@@ -10,6 +10,8 @@ import Layout from "../components/Layout.jsx";
 
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -17,7 +19,10 @@ const Login = () => {
   const passwordRef = useRef(null);
 
   const handleSubmitButton = async () => {
+    if(loading) return;
+
     setErrorMessage(null);
+    setLoading(true);
 
     const email = emailRef.current?.value || "";
     const password = passwordRef.current?.value || "";
@@ -25,6 +30,7 @@ const Login = () => {
     const message = validateLoginData(email, password);
     if (message) {
       setErrorMessage(message);
+      setLoading(false);
       return;
     }
 
@@ -44,6 +50,7 @@ const Login = () => {
       navigate("/browse", { replace: true });
     } catch (err) {
       setErrorMessage(err.message || "Failed to sign in");
+      setLoading(false);
     }
   };
 
@@ -63,8 +70,8 @@ const Login = () => {
 
             {errorMessage && <p className="text-red-400 text-sm my-3">{errorMessage}</p>}
 
-            <button onClick={handleSubmitButton} className="w-full py-3 my-6 rounded-lg bg-red-600 hover:bg-red-700 cursor-pointer text-white font-semibold transition">
-              Sign In
+            <button onClick={handleSubmitButton} disabled={loading} className="w-full py-3 my-6 rounded-lg bg-red-600 hover:bg-red-700 cursor-pointer text-white font-semibold transition disabled:opacity-60">
+              {loading ? "Signing in..." : "Sign In"}
             </button>
 
             <div className="mt-4 text-center text-sm text-gray-400">
