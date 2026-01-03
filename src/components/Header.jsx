@@ -13,6 +13,11 @@ const Header = () => {
 
   const [searchText, setSearchText] = useState("");
 
+  const {data: user, loading} = useSelector(store => store.user);
+  const langKey = useSelector(store => store.langauge.lang);
+
+  if(loading) return null;
+
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (!searchText.trim()) return;
@@ -21,10 +26,6 @@ const Header = () => {
     setSearchText("");
   };
 
-  
-
-  const user = useSelector(store => store.user);
-  const langKey = useSelector(store => store.langauge.lang);
 
   const handleSignOut = async () => {
     try {
