@@ -4,10 +4,10 @@
   </a>
 </p>
 <h2 align="center">
-    <b>🎬 <i>'Netflix-GPT '</i> -&ensp;Netflix-Inspired UI with AI Recommendations</b>
+    <b>🎬 <i>'Netflix-GPT '</i> -&ensp;Netflix-Inspired Movie Streaming Platform with AI Recommendations</b>
 </h2>
 
-A modern Netflix-inspired movie streaming UI powered by AI recommendations.  
+A modern Netflix-inspired movie streaming platform powered by AI recommendations.  
 **Netflix GPT** combines real-time movie data from TMDB with AI-driven suggestions using OpenRouter to deliver a smart, interactive movie discovery experience.
 
 🌐 **Live Demo:** https://gpt-flix-alpha.vercel.app/
@@ -19,14 +19,14 @@ A modern Netflix-inspired movie streaming UI powered by AI recommendations.
 ## 📸 Screenshots
 
 <div align="center">
-      <img src = "https://iili.io/fXLSXTP.md.png" width ="400" /> 
-      <img src = "https://i.ibb.co/My9Ydy3W/Login.png" width ="400" /> 
+      <img src = "./Netflix-GPT Previews/SignUp.png" width ="400" /> 
+      <img src = "./Netflix-GPT Previews/Login.png" width ="400" /> 
       <br/>
-      <img src = "https://i.ibb.co/M3QhdBP/Video-Container.png" width ="400" /> 
-      <img src = "https://i.ibb.co/4ZDKnHTw/Movies-Container.png" width ="400" /> 
+      <img src = "./Netflix-GPT Previews/VideoContainer.png" width ="400" /> 
+      <img src = "./Netflix-GPT Previews/MoviesContainer.png" width ="400" /> 
       <br/> 
-      <img src = "https://i.ibb.co/HLGczvyx/Movie-Details.png" width ="400" />
-      <img src = "https://i.ibb.co/JjWK1Lnk/GPT.png" width ="400" /> 
+      <img src = "./Netflix-GPT Previews/MovieDetails.png" width ="400" />
+      <img src = "./Netflix-GPT Previews/GPT.png" width ="400" /> 
       <br/>
 </div>
 <br/><hr/>
