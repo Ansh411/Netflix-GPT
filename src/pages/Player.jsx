@@ -2,10 +2,15 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
 const Player = ({ type }) => {
-  const { id } = useParams();
+  const { id, season, episode } = useParams();
+
+  const seasonNumber = season || 1;
+  const episodeNumber = episode || 1;
 
   const embedUrl =
-    type === "movie" ? `https://www.vidking.net/embed/movie/${id}?color=e50914&autoPlay=true` : `https://www.vidking.net/embed/tv/${id}/1/1?color=e50914&autoPlay=true&nextEpisode=true&episodeSelector=true`;
+    type === "movie" 
+    ? `https://www.vidking.net/embed/movie/${id}?color=e50914&autoPlay=true`
+    : `https://www.vidking.net/embed/tv/${id}/${seasonNumber}/${episodeNumber}?color=e50914&autoPlay=true&nextEpisode=true&episodeSelector=true`;
 
  
   useEffect(() => {
@@ -14,7 +19,7 @@ const Player = ({ type }) => {
         try {
           const data = JSON.parse(event.data);
           if (data?.type === "PLAYER_EVENT") {
-            console.log("Player Event:", data.data);
+            // console.log("Player Event:", data.data);
 
             // OPTIONAL:
             localStorage.setItem(

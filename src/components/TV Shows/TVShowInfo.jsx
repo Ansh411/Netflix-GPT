@@ -48,7 +48,7 @@ const TVShowInfo = ({ tvshowId }) => {
       </p>
 
       <div className="flex gap-4 mt-6">
-        <Link to={`/player/tv/${tvshowId}`}>
+        <Link to={`/player/tv/${tvshowId}/1/1`}>
           <button className="flex items-center gap-2 bg-white text-black px-6 py-3 cursor-pointer rounded-md font-semibold hover:bg-gray-200 transition">
             <img src={PLAY} className="w-6" />
             Play

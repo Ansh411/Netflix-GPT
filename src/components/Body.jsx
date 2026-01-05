@@ -91,6 +91,14 @@ const appRouter = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "player/tv/:id/:season/:episode",
+        element: (
+          <ProtectedRoute>
+            <Player type="tv" />
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
 ]);

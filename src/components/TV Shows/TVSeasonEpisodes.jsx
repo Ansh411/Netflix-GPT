@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { IMG_CDN_URL } from "../../assets/constants";
+import { useNavigate } from "react-router-dom";
 
 const BACKEND_URL = "https://netflix-gpt-backend-6ayv.onrender.com";
 
@@ -9,6 +10,7 @@ const TVSeasonEpisodes = ({ tvShowId, totalSeasons }) => {
   const [season, setSeason] = useState(1);
   const [episodes, setEpisodes] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!tvShowId) return;
@@ -59,6 +61,7 @@ const TVSeasonEpisodes = ({ tvShowId, totalSeasons }) => {
           {episodes.map((ep) => (
             <div
               key={ep.id}
+              onClick={() => navigate(`/player/tv/${tvShowId}/${season}/${ep.episode_number}`)}
               className="flex gap-4 items-start hover:bg-white/5 p-3 cursor-pointer rounded-lg transition"
             >
               {/* THUMBNAIL */}
