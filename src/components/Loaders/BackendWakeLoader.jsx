@@ -20,12 +20,7 @@ const BackendWakeLoader = ({
             {subtitle}
           </p>
         </div>
-
-        {/* Subtle shimmer bar */}
-        <div className="w-52 h-1 overflow-hidden rounded-full bg-zinc-800">
-          <div className="h-full w-1/3 bg-linear-to-r from-zinc-800 via-zinc-500 to-zinc-800 animate-[shimmer_1.5s_infinite]" />
-        </div>
-
+        
       </div>
     </div>
   );
