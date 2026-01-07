@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 import Header from "../components/Header";
 import VideoBackground from "../components/VideoBackground";
-import VideoLoader from "../components/VideoLoader";
+import VideoLoader from "../components/Loaders/VideoLoader";
 import MovieInfo from "../components/Movies/MovieInfo";
 import SimilarMovies from "../components/Movies/SimilarMovies";
 import CastCarouselMovies from "../components/Movies/CastCarouselMovies";

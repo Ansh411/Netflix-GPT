@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import VideoBackground from "./VideoBackground";
 import VideoTitle from "./VideoTitle";
 import useMovieTrailer from "../hooks/useMovieTrailer";
-import VideoLoader from "./VideoLoader";
+import VideoLoader from "./Loaders/VideoLoader";
 import { setMuted } from "../store/videoSlice";
 
 const MainContainer = () => {

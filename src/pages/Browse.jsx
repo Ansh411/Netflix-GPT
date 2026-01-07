@@ -19,9 +19,11 @@ import useTopRatedTV from "../hooks/TvShows Hooks/useTopRatedTV";
 import useOnTheAir from "../hooks/TvShows Hooks/useOnTheAir";
 
 import { useSelector } from "react-redux";
-import Loader_Browse from "../components/Loader_Browse";
+import BackendWakeLoader from "../components/Loaders/BackendWakeLoader";
 
 const Browse = () => {
+
+
   useNowPlayingMovies();
   useTopRatedMovies();
   useClassicMovies();
@@ -40,7 +42,7 @@ const Browse = () => {
   const loading = useSelector((store) => store.movies.loading);
 
   if (loading) {
-    return <Loader_Browse />;
+    return <BackendWakeLoader />;
   }
 
   return (

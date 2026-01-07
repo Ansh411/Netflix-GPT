@@ -1,13 +1,13 @@
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Loader_Browse from "../components/Loader_Browse";
+import SignInLoader from "../components/Loaders/SignInLoader";
 
 const ProtectedRoute = ({ children }) => {
 
   const {data : user, loading} = useSelector((store) => store.user);
   
   if(loading) {
-    return <Loader_Browse />;
+    return <SignInLoader />;
   }
 
   if(!user) {

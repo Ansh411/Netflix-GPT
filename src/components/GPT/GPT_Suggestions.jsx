@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import MediaCard from "../MediaCard";
 import capitialize from "../../utils/capitalizeWords";
-import Loader from "../Loader";
+import LoaderGPT from "../Loaders/LoaderGPT";
 
 const GPT_Suggestions = () => {
   const { results, GPTSearchText, isLoading, searchType } = useSelector(store => store.GPT);
@@ -15,7 +15,7 @@ const GPT_Suggestions = () => {
   if (isLoading) {
     return (
       <div className="mt-20 flex justify-center">
-        <Loader text={loaderTextMap[searchType]} />
+        <LoaderGPT text={loaderTextMap[searchType]} />
       </div>
     );
   }
