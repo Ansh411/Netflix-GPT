@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const BACKEND_URL = "https://netflix-gpt-backend-6ayv.onrender.com";
 
-const FALLBACK_IMAGE = "https://i.im.ge/2025/12/31/BKwwSz.istockphoto-1055079680-612x612.jpeg";
+const FALLBACK_IMAGE = "https://upload.wikimedia.org/wikipedia/commons/7/75/No_image_available.png";
 
 const TVSeasonEpisodes = ({ tvShowId, totalSeasons }) => {
   const [season, setSeason] = useState(1);
@@ -68,7 +68,7 @@ const TVSeasonEpisodes = ({ tvShowId, totalSeasons }) => {
               <img
                 src={ep.still_path ? IMG_CDN_URL + ep.still_path : FALLBACK_IMAGE}
                 alt={ep.name}
-                className="w-40 sm:w-[200px] aspect-video object-cover rounded-md"
+                className="w-40 sm:w-[200px] aspect-video object-contain rounded-md"
               />
 
               {/* INFO */}
