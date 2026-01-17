@@ -1,14 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import { SEARCH, SEARCH_GPT } from "../../assets/constants";
+import { SEARCH_GPT } from "../../assets/constants";
 import languages from "../../utils/LanguageConstants";
 import { useRef } from "react";
 import useOpenRouterSearch from "../../hooks/useOpenRouterSearch";
-import { addGPTResults, addSearchText, setSearchType, startGPTLoading } from "../../store/GPTSlice";
-
-
+import {
+  addGPTResults,
+  addSearchText,
+  setSearchType,
+  startGPTLoading,
+} from "../../store/GPTSlice";
 
 const GPT_SearchBar = () => {
-
   const dispatch = useDispatch();
 
   const langKey = useSelector((store) => store?.langauge?.lang);
@@ -17,115 +19,152 @@ const GPT_SearchBar = () => {
 
   const { getRecommendations } = useOpenRouterSearch();
 
+  // 🔒 TMDB cache to avoid duplicate API calls
+  const tmdbCache = new Map();
+
   const searchMovieTMDB = async (movieName) => {
-    try{
+    const cacheKey = `movie-${movieName.toLowerCase()}`;
+    if (tmdbCache.has(cacheKey)) return tmdbCache.get(cacheKey);
 
-      const res = await fetch(`https://netflix-gpt-backend-6ayv.onrender.com/api/movies/search?q=${encodeURIComponent(movieName)}`);
+    try {
+      const res = await fetch(
+        `https://netflix-gpt-backend-6ayv.onrender.com/api/movies/search?q=${encodeURIComponent(
+          movieName
+        )}`
+      );
 
-      if(!res.ok) return null;
+      if (!res.ok) return null;
 
       const json = await res.json();
+      if (!json.results?.length) return null;
 
-      if(!json.results?.length) return null;
+      const normalizedName = movieName.toLowerCase();
 
-      const normalizedMovieName = movieName.trim().toLowerCase();
+      const exactMatch =
+        json.results.find((movie) => {
+          const titleMatch =
+            movie?.title?.toLowerCase().includes(normalizedName) ||
+            movie?.original_title?.toLowerCase().includes(normalizedName);
 
-      const exactMatch = json.results.find((movie) => {
+          const languageMatch = ["en", "hi"].includes(
+            movie?.original_language
+          );
 
-      const titleMatch = movie?.title?.toLowerCase() === normalizedMovieName || movie?.original_title?.toLowerCase() === normalizedMovieName;
+          return titleMatch && languageMatch && movie?.poster_path;
+        }) || null;
 
-      const languageMatch = movie?.original_language === "hi" || movie?.original_language === "en";
+      tmdbCache.set(cacheKey, exactMatch);
+      return exactMatch;
+    } catch (err) {
+      console.error("TMDB Movie Error:", err);
+      return null;
+    }
+  };
 
-      const hasPoster = Boolean(movie?.poster_path);
+  const searchTVTMDB = async (tvName) => {
+    const cacheKey = `tv-${tvName.toLowerCase()}`;
+    if (tmdbCache.has(cacheKey)) return tmdbCache.get(cacheKey);
 
-      return titleMatch && languageMatch && hasPoster;
-  });
+    try {
+      const res = await fetch(
+        `https://netflix-gpt-backend-6ayv.onrender.com/api/tv/search?q=${encodeURIComponent(
+          tvName
+        )}`
+      );
 
-    return exactMatch || null;
-    
-  } catch(err){
-    console.error("TMDB Backend Error: ", err);
-    return null;
-  }
-};
+      if (!res.ok) return null;
 
-const searchTVTMDB = async (tvName) => {
-  try {
-    const res = await fetch(
-      `https://netflix-gpt-backend-6ayv.onrender.com/api/tv/search?q=${encodeURIComponent(tvName)}`
-    );
+      const json = await res.json();
+      if (!json.results?.length) return null;
 
-    if (!res.ok) return null;
+      const normalizedName = tvName.toLowerCase();
 
-    const json = await res.json();
-    if (!json.results?.length) return null;
+      const exactMatch =
+        json.results.find((tv) => {
+          const titleMatch =
+            tv?.name?.toLowerCase().includes(normalizedName) ||
+            tv?.original_name?.toLowerCase().includes(normalizedName);
 
-    const normalizedTVName = tvName.trim().toLowerCase();
+          const languageMatch = ["en", "hi"].includes(tv?.original_language);
 
-    const exactMatch = json.results.find((tv) => {
-      const titleMatch =
-        tv?.name?.toLowerCase() === normalizedTVName ||
-        tv?.original_name?.toLowerCase() === normalizedTVName;
+          return titleMatch && languageMatch && tv?.poster_path;
+        }) || null;
 
-      const languageMatch =
-        tv?.original_language === "en" || tv?.original_language === "hi";
-
-      const hasPoster = Boolean(tv?.poster_path);
-
-      return titleMatch && languageMatch && hasPoster;
-    });
-
-    return exactMatch || null;
-
-  } catch (err) {
-    console.error("TMDB TV Backend Error:", err);
-    return null;
-  }
-};
-
+      tmdbCache.set(cacheKey, exactMatch);
+      return exactMatch;
+    } catch (err) {
+      console.error("TMDB TV Error:", err);
+      return null;
+    }
+  };
 
   const handleGPTSearchClick = async () => {
+    const userQuery = searchText?.current?.value?.trim();
+    if (!userQuery) return;
 
-      const userQuery = searchText?.current?.value;
-    
-      if (!userQuery) return;
+    dispatch(addSearchText(userQuery));
+    dispatch(startGPTLoading());
 
-      dispatch(addSearchText(userQuery));
-
-      dispatch(startGPTLoading());
-
-      try{
-
-        const gptResults = await getRecommendations({query: userQuery, type: searchType });
-
-        const promiseArray = gptResults.map(async (title) => {
-          if (searchType === "movie") {
-            return await searchMovieTMDB(title);
-          }
-
-          if (searchType === "tv") {
-            return await searchTVTMDB(title);
-          }
-
-          // BOTH → try movie first, then TV
-          const movie = await searchMovieTMDB(title);
-          if (movie) return movie;
-
-          return await searchTVTMDB(title);
+    try {
+      const gptResults = await getRecommendations({
+        query: userQuery,
+        type: searchType,
       });
 
-        const TMDB_Results = await Promise.all(promiseArray);
-
-        const finalResults = TMDB_Results.filter(Boolean);
-
-        dispatch(addGPTResults({names: gptResults , results : finalResults}));
-
-      } catch (err) {
-        console.error("GPT Search Failed: ", err);
+      if (!Array.isArray(gptResults) || gptResults.length === 0) {
+        dispatch(addGPTResults({ names: [], results: [] }));
+        return;
       }
-    }; 
-  
 
+      // ✅ DEDUPE GPT TITLES
+      const uniqueGPTTitles = Array.from(
+        new Map(
+          gptResults.map((t) => [t.toLowerCase(), t])
+        ).values()
+      );
+
+      const tmdbPromises = uniqueGPTTitles.map(async (title) => {
+        if (searchType === "movie") {
+          return await searchMovieTMDB(title);
+        }
+
+        if (searchType === "tv") {
+          return await searchTVTMDB(title);
+        }
+
+        // BOTH → movie first, then TV
+        const movie = await searchMovieTMDB(title);
+        if (movie) return movie;
+
+        return await searchTVTMDB(title);
+      });
+
+      const tmdbResults = await Promise.all(tmdbPromises);
+
+      // ✅ FINAL DEDUPE BY ID + TYPE
+      const finalResults = Array.from(
+        new Map(
+          tmdbResults
+            .filter(Boolean)
+            .map((item) => [
+              `${item.media_type || (item.title ? "movie" : "tv")}-${item.id}`,
+              item,
+            ])
+        ).values()
+      );
+
+      dispatch(
+        addGPTResults({
+          names: uniqueGPTTitles,
+          results: finalResults,
+        })
+      );
+    } catch (err) {
+      console.error("GPT Search Failed:", err);
+      dispatch(addGPTResults({ names: [], results: [] }));
+    }
+  };
+  
   return (
 <form onSubmit={(e) => e.preventDefault()}
   className="w-full max-w-3xl flex items-center gap-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] px-4 py-3">
@@ -164,4 +203,7 @@ const searchTVTMDB = async (tvName) => {
 };
 
 export default GPT_SearchBar;
+
+
+
 

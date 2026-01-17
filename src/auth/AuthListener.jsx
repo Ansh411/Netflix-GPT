@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
@@ -8,9 +8,9 @@ const AuthListener = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-
+    // 🔒 Start auth loading
     dispatch(setAuthLoading(true));
-    
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName, photoURL } = user;
@@ -18,16 +18,15 @@ const AuthListener = () => {
       } else {
         dispatch(removeUser());
       }
-      setLoading(false);
+
+      // ✅ Auth status resolved
+      dispatch(setAuthLoading(false));
     });
 
     return () => unsubscribe();
   }, [dispatch]);
 
-  // Prevent app from rendering routes until auth status is determined
   return null;
 };
 
 export default AuthListener;
-
-
