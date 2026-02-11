@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { IMG_CDN_URL } from "../../assets/constants";
 
-const FALLBACK_IMG = "https://media.istockphoto.com/id/1055079680/vector/black-linear-photo-camera-like-no-image-available.jpg?s=612x612&w=0&k=20&c=P1DebpeMIAtXj_ZbVsKVvg-duuL0v9DlrOZUvPG6UJk="
+const FALLBACK_IMG = "https://media.istockphoto.com/id/1055079680/vector/black-linear-photo-camera-like-no-image-available.jpg?s=612x612&w=0&k=20&c=P1DebpeMIAtXj_ZbVsKVvg-duuL0v9DlrOZUvPG6UJk=";
+
+import { BACKEND_API } from "../../assets/constants";
 
 const CastCarouselTV = ({ tvShowId }) => {
   const [cast, setCast] = useState([]);
@@ -13,7 +15,7 @@ const CastCarouselTV = ({ tvShowId }) => {
   useEffect(() => {
     const fetchCast = async () => {
       const res = await fetch(
-        `https://netflix-gpt-backend-6ayv.onrender.com/api/tv/${tvShowId}/credits`
+        `${BACKEND_API}/api/tv/${tvShowId}/credits`
       );
       const json = await res.json();
       setCast(json.cast || []);

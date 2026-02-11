@@ -14,8 +14,7 @@ import TVSeasonEpisodes from "../components/TV Shows/TVSeasonEpisodes";
 import useTrailersTV from "../hooks/TvShows Hooks/useTrailersTV";
 import { setMuted } from "../store/videoSlice";
 import { addTVDetails } from "../store/tvShowsSlice";
-
-const BACKEND_URL = "https://netflix-gpt-backend-6ayv.onrender.com";
+import { BACKEND_API } from "../assets/constants";
 
 const TVShowDetails = () => {
   const { id } = useParams();
@@ -39,7 +38,7 @@ const TVShowDetails = () => {
     const fetchDetails = async () => {
       try {
         const res = await fetch(
-          `${BACKEND_URL}/api/tv/${id}/details`
+          `${BACKEND_API}/api/tv/${id}/details`
         );
         const json = await res.json();
         dispatch(addTVDetails(json));

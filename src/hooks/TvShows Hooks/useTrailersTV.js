@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addTVTrailer } from "../../store/tvShowsSlice";
+import { BACKEND_API } from "../../assets/constants";
 
 const useTrailersTV = (tvShowId) => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const useTrailersTV = (tvShowId) => {
     const fetchTrailer = async () => {
       try {
         const res = await fetch(
-          `https://netflix-gpt-backend-6ayv.onrender.com/api/tv/${tvShowId}/trailer`
+          `${BACKEND_API}/api/tv/${tvShowId}/trailer`
         );
 
         if (!res.ok) throw new Error("Trailer fetch failed");

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { PLAY } from "../../assets/constants";
 import useMediaLogo from "../../hooks/useMediaLogo";
+import { BACKEND_API } from "../../assets/constants";
 
 const MovieInfo = ({ movieId }) => {
   const [movie, setMovie] = useState(null);
@@ -11,7 +12,7 @@ const MovieInfo = ({ movieId }) => {
   useEffect(() => {
     const fetchDetails = async () => {
       const res = await fetch(
-        `https://netflix-gpt-backend-6ayv.onrender.com/api/movies/${movieId}/details`
+        `${BACKEND_API}/api/movies/${movieId}/details`
       );
       const json = await res.json();
       setMovie(json);

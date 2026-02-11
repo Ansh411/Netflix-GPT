@@ -4,6 +4,8 @@ import { IMG_CDN_URL } from "../../assets/constants";
 
 const FALLBACK_IMG ="https://media.istockphoto.com/id/1055079680/vector/black-linear-photo-camera-like-no-image-available.jpg?s=612x612&w=0&k=20&c=P1DebpeMIAtXj_ZbVsKVvg-duuL0v9DlrOZUvPG6UJk=";
 
+import { BACKEND_API } from "../../assets/constants";
+
 const CastCarouselMovies = ({ movieId }) => {
   const [cast, setCast] = useState([]);
   const scrollRef = useRef(null);
@@ -13,7 +15,7 @@ const CastCarouselMovies = ({ movieId }) => {
   useEffect(() => {
     const fetchCast = async () => {
       const res = await fetch(
-        `https://netflix-gpt-backend-6ayv.onrender.com/api/movies/${movieId}/credits`
+        `${BACKEND_API}/api/movies/${movieId}/credits`
       );
       const json = await res.json();
       setCast(json.cast || []);

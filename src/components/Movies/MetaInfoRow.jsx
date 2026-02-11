@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BACKEND_API } from "../../assets/constants";
 
 const MetaInfoRow = ({ movieId }) => {
   const [meta, setMeta] = useState(null);
@@ -6,7 +7,7 @@ const MetaInfoRow = ({ movieId }) => {
   useEffect(() => {
     const fetchMeta = async () => {
       const res = await fetch(
-        `https://netflix-gpt-backend-6ayv.onrender.com/api/movies/${movieId}/meta`
+        `${BACKEND_API}/api/movies/${movieId}/meta`
       );
       const json = await res.json();
       setMeta(json);

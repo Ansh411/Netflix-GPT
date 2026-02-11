@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { IMG_CDN_URL } from "../../assets/constants";
 import { useNavigate } from "react-router-dom";
 
-const BACKEND_URL = "https://netflix-gpt-backend-6ayv.onrender.com";
+import { BACKEND_API } from "../../assets/constants";
 
 const FALLBACK_IMAGE = "https://upload.wikimedia.org/wikipedia/commons/7/75/No_image_available.png";
 
@@ -19,7 +19,7 @@ const TVSeasonEpisodes = ({ tvShowId, totalSeasons }) => {
       setLoading(true);
       try {
         const res = await fetch(
-          `${BACKEND_URL}/api/tv/${tvShowId}/season/${season}`
+          `${BACKEND_API}/api/tv/${tvShowId}/season/${season}`
         );
         const json = await res.json();
         setEpisodes(json.episodes || []);

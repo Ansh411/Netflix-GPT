@@ -25,6 +25,8 @@ export const MOVIE = "https://i.ibb.co/WvM5m45x/Movie.png";
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 
+export const BACKEND_API = "https://netflix-gpt-backend-9z4m.onrender.com";
+
 
 export const SUPPORTED_LANGUAGES = [
   {identifier: "en", name: "English"},

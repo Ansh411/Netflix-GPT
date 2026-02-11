@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addTopRatedTV } from "../../store/tvShowsSlice";
+import { BACKEND_API } from "../../assets/constants";
 
 
 const useTopRatedTV = () => {
@@ -10,7 +11,7 @@ const useTopRatedTV = () => {
     const dispatch = useDispatch();
 
     const getTopRatedTV = async () => {
-    const data = await fetch("https://netflix-gpt-backend-6ayv.onrender.com/api/tv/top-rated");
+    const data = await fetch(BACKEND_API + "/api/tv/top-rated");
 
     const json = await data.json();
 

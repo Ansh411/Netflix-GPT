@@ -10,6 +10,8 @@ import {
   startGPTLoading,
 } from "../../store/GPTSlice";
 
+import { BACKEND_API } from "../../assets/constants";
+
 const GPT_SearchBar = () => {
   const dispatch = useDispatch();
 
@@ -28,7 +30,7 @@ const GPT_SearchBar = () => {
 
     try {
       const res = await fetch(
-        `https://netflix-gpt-backend-6ayv.onrender.com/api/movies/search?q=${encodeURIComponent(
+        `${BACKEND_API}/api/movies/search?q=${encodeURIComponent(
           movieName
         )}`
       );
@@ -67,7 +69,7 @@ const GPT_SearchBar = () => {
 
     try {
       const res = await fetch(
-        `https://netflix-gpt-backend-6ayv.onrender.com/api/tv/search?q=${encodeURIComponent(
+        `${BACKEND_API}/api/tv/search?q=${encodeURIComponent(
           tvName
         )}`
       );

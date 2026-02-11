@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
 import { addClassicMovies } from '../store/moviesSlice';
+import { BACKEND_API } from '../assets/constants';
 
 
 const useClassicMovies = () => {
@@ -10,7 +11,7 @@ const useClassicMovies = () => {
     const dispatch = useDispatch();
 
     const getClassicMovies = async () => {
-        const data = await fetch("https://netflix-gpt-backend-6ayv.onrender.com/api/movies/classic");
+        const data = await fetch(BACKEND_API + "/api/movies/classic");
 
         const json = await data.json();
 

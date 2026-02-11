@@ -1,3 +1,5 @@
+import { BACKEND_API } from "../assets/constants";
+
 const useOpenRouterSearch = () => {
   const getRecommendations = async ({
     query,
@@ -7,7 +9,7 @@ const useOpenRouterSearch = () => {
 
     try {
       const res = await fetch(
-        "https://netflix-gpt-backend-6ayv.onrender.com/api/gpt/search",
+        `${BACKEND_API}/api/gpt/search`,
         {
           method: "POST",
           headers: {

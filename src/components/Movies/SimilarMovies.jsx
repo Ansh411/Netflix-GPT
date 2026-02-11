@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import MediaCard from "../MediaCard";
+import { BACKEND_API } from "../../assets/constants";
 
 const SimilarMovies = ({ movieId }) => {
   const [movies, setMovies] = useState([]);
@@ -11,7 +12,7 @@ const SimilarMovies = ({ movieId }) => {
   useEffect(() => {
     const fetchSimilar = async () => {
       const res = await fetch(
-        `https://netflix-gpt-backend-6ayv.onrender.com/api/movies/${movieId}/similar`
+        `${BACKEND_API}/api/movies/${movieId}/similar`
       );
       const json = await res.json();
       setMovies(json.results || []);

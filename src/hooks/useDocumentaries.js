@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
 import { addDocumentaries } from '../store/moviesSlice';
+import { BACKEND_API } from '../assets/constants';
 
 
 const useDocumentaries = () => {
@@ -10,7 +11,7 @@ const useDocumentaries = () => {
     const dispatch = useDispatch();
 
     const getDocumentaries = async () => {
-        const data = await fetch("https://netflix-gpt-backend-6ayv.onrender.com/api/movies/documentary");
+        const data = await fetch(BACKEND_API + "/api/movies/documentary");
 
         const json = await data.json();
 

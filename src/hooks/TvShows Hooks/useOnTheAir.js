@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addOnTheAir } from "../../store/tvShowsSlice";
+import { BACKEND_API } from "../../assets/constants";
 
 
 const useOnTheAir = () => {
@@ -10,7 +11,7 @@ const useOnTheAir = () => {
     const dispatch = useDispatch();
 
     const getOnTheAir = async () => {
-    const data = await fetch("https://netflix-gpt-backend-6ayv.onrender.com/api/tv/on-the-air");
+    const data = await fetch(BACKEND_API + "/api/tv/on-the-air");
 
     const json = await data.json();
 

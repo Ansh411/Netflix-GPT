@@ -3,8 +3,9 @@ import { useSearchParams } from "react-router-dom";
 import Header from "../components/Header";
 import MediaCard from "../components/MediaCard";
 import { BANNER_IMG, IMG_CDN_URL } from "../assets/constants";
+import { BACKEND_API } from "../assets/constants";
 
-const BACKEND_URL = "https://netflix-gpt-backend-6ayv.onrender.com";
+
 
 const SearchResults = () => {
   const [searchParams] = useSearchParams();
@@ -23,7 +24,7 @@ const SearchResults = () => {
     setLoading(true);
       try {
         const res = await fetch(
-          `${BACKEND_URL}/api/search?query=${query}`,
+          `${BACKEND_API}/api/search?query=${query}`,
           { signal: controller.signal }
         );
         const json = await res.json();

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addPopularTV } from "../../store/tvShowsSlice";
+import { BACKEND_API } from "../../assets/constants";
 
 
 const usePopularTV = () => {
@@ -10,7 +11,7 @@ const usePopularTV = () => {
     const dispatch = useDispatch();
 
     const getPopularTV = async () => {
-    const data = await fetch("https://netflix-gpt-backend-6ayv.onrender.com/api/tv/popular");
+    const data = await fetch(BACKEND_API + "/api/tv/popular");
 
     const json = await data.json();
 

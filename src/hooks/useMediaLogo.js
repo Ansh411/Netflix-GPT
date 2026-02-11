@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { IMG_CDN_URL } from "../assets/constants";
 
-const BACKEND_URL = "https://netflix-gpt-backend-6ayv.onrender.com";
+import { BACKEND_API } from "../assets/constants";
 
 /* *
  * @param {string|number} id - TMDB id
@@ -22,7 +22,7 @@ const useMediaLogo = (id, type = "movie") => {
         setLoading(true);
 
         const res = await fetch(
-          `${BACKEND_URL}/api/${type}/${id}/logo`,
+          `${BACKEND_API}/api/${type}/${id}/logo`,
           { signal: controller.signal }
         );
 
