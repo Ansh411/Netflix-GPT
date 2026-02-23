@@ -43,14 +43,14 @@ const VideoTitle = ({ media, type }) => {
         <div className="flex gap-4 mt-6">
           <Link to={`/player/${type}/${id}`}>
             <button className="flex items-center gap-2 bg-white text-black px-6 py-3 cursor-pointer rounded-md font-semibold hover:bg-gray-200 transition">
-              <img src={PLAY} className="w-6" />
+              <img src={PLAY} className="w-5" />
               Play
             </button>
           </Link>
 
           <Link to={`/${type}/${id}`}>
             <button className="flex items-center gap-2 bg-gray-600/60 text-white px-6 py-3 cursor-pointer rounded-md font-semibold hover:bg-gray-600 transition">
-              <img src={INFO} className="w-6" />
+              <img src={INFO} className="w-5.5" />
               More Info
             </button>
           </Link>

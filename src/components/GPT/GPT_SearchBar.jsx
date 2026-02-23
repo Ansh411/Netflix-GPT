@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { SEARCH_GPT } from "../../assets/constants";
+import { DOWN, SEARCH_GPT } from "../../assets/constants";
 import languages from "../../utils/LanguageConstants";
 import { useRef } from "react";
 import useOpenRouterSearch from "../../hooks/useOpenRouterSearch";
@@ -182,8 +182,8 @@ const GPT_SearchBar = () => {
       <option value="tv">TV Shows</option>
     </select>
 
-  <img src="https://i.ibb.co/PvCjMQ5k/Down.png" alt="Dropdown"
-    className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 opacity-80"/>
+  <img src={DOWN} alt="Dropdown"
+    className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 opacity-80"/>
   </div>
 
   {/* SEARCH INPUT */}
@@ -196,7 +196,7 @@ const GPT_SearchBar = () => {
     type="submit"
     className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold 
     px-6 py-3 rounded-xl transition-all duration-200 shadow-lg hover:shadow-red-500/30 active:scale-95 cursor-pointer">
-    <img src={SEARCH_GPT} alt="Search Icon" className="w-6 h-6" />
+    <img src={SEARCH_GPT} alt="Search Icon" className="w-7 h-7" />
     {languages[langKey].search}
   </button>
 </form>

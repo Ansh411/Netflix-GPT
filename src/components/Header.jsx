@@ -48,7 +48,7 @@ const Header = () => {
       bg-linear-to-b from-black/90 to-transparent backdrop-blur-xs">
       
       {/* LOGO */}
-      <Link className="block" to="/"><img src={LOGO} alt="Netflix GPT" className="w-28 sm:w-32 md:w-44 drop-shadow-xl select-none"/></Link>
+      <Link className="block" to="/"><img src={LOGO} alt="Netflix GPT" className="w-38 sm:w-42 md:w-54 drop-shadow-xl select-none"/></Link>
 
       {/* SEARCH BAR (CENTER) */}
       {(user && !isGPT) && (
@@ -62,7 +62,7 @@ const Header = () => {
 
         {/* 🔍 ICON */}
          <img src={SEARCH} alt="Search"
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 opacity-80 pointer-events-none"/>
+          className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 opacity-80 pointer-events-none"/>
         </div>
       </form>
     )}
