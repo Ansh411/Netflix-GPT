@@ -1,4 +1,4 @@
-export const LOGO = "/public/Netflix-GPT.png"
+export const LOGO = "/Netflix-GPT.png"
 // "https://i.ibb.co/wZ6b2Yqd/Netflix-GPT.png";
 
 export const BANNER_IMG = "https://assets.nflxext.com/ffe/siteui/vlv3/c81956f1-5750-454c-9b3c-7a4d990d3d06/web/IN-en-20251208-TRIFECTA-perspective_d69f5f82-9a35-45d7-a7b6-9af6e0643bf5_large.jpg";
@@ -11,21 +11,21 @@ export const API_OPTIONS = {
   }
 };
 
-export const PLAY = "/public/play.png"
+export const PLAY = "/play.png"
 //  "https://i.ibb.co/G484tVf9/play-1.png";
 //  "https://i.ibb.co/RTdDXkqC/play.png";
 
-export const INFO = "/public/info.png";
+export const INFO = "/info.png";
 // "https://i.ibb.co/BHVCQ5jy/info-1.png";
 //  "https://i.ibb.co/GfzFwhry/info-2.png";
 
-export const SEARCH_GPT = "/public/search_gpt.png";
+export const SEARCH_GPT = "/search_gpt.png";
 // "https://i.ibb.co/J8ZR35C/magnifying-glass-1.png";
 
-export const SEARCH = "/public/search_bar.png"
+export const SEARCH = "/search_bar.png"
 //  "https://i.ibb.co/snkcpkF/interface.png";
 
-export const MOVIE = "/public/video-player.png";
+export const MOVIE = "/video-player.png";
 // "https://i.ibb.co/WvM5m45x/Movie.png";
 // https://i.ibb.co/rRR7hbHm/cinema.png
 
@@ -33,7 +33,7 @@ export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 
 export const BACKEND_API = "https://netflix-gpt-backend-9z4m.onrender.com";
 
-export const DOWN = "/public/down.png";
+export const DOWN = "/down.png";
 // https://i.ibb.co/PvCjMQ5k/Down.png
 
 export const SUPPORTED_LANGUAGES = [
